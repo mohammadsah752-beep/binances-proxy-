@@ -6,16 +6,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
-app.get('/', (req, res) => {
-  res.status(200).send('Binance Proxy is active');
-});
-
-app.post('/', (req, res) => {
-  res.status(200).send('Binance Proxy POST is active');
-});
-
-app.use('/api', async (req, res) => {
+app.use(async (req, res) => {
   try {
     const targetUrl = `https://api.binance.com${req.originalUrl}`;
     
